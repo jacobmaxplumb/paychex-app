@@ -1,48 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createStatus = /* GraphQL */ `
-  mutation CreateStatus(
-    $input: CreateStatusInput!
-    $condition: ModelStatusConditionInput
-  ) {
-    createStatus(input: $input, condition: $condition) {
-      id
-      isClockedIn
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const updateStatus = /* GraphQL */ `
-  mutation UpdateStatus(
-    $input: UpdateStatusInput!
-    $condition: ModelStatusConditionInput
-  ) {
-    updateStatus(input: $input, condition: $condition) {
-      id
-      isClockedIn
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const deleteStatus = /* GraphQL */ `
-  mutation DeleteStatus(
-    $input: DeleteStatusInput!
-    $condition: ModelStatusConditionInput
-  ) {
-    deleteStatus(input: $input, condition: $condition) {
-      id
-      isClockedIn
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
 export const createEntry = /* GraphQL */ `
   mutation CreateEntry(
     $input: CreateEntryInput!
@@ -51,6 +9,7 @@ export const createEntry = /* GraphQL */ `
     createEntry(input: $input, condition: $condition) {
       id
       dateTime
+      status
       createdAt
       updatedAt
       owner
@@ -65,6 +24,7 @@ export const updateEntry = /* GraphQL */ `
     updateEntry(input: $input, condition: $condition) {
       id
       dateTime
+      status
       createdAt
       updatedAt
       owner
@@ -79,6 +39,7 @@ export const deleteEntry = /* GraphQL */ `
     deleteEntry(input: $input, condition: $condition) {
       id
       dateTime
+      status
       createdAt
       updatedAt
       owner

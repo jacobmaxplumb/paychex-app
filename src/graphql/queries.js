@@ -1,40 +1,12 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getStatus = /* GraphQL */ `
-  query GetStatus($id: ID!) {
-    getStatus(id: $id) {
-      id
-      isClockedIn
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const listStatuses = /* GraphQL */ `
-  query ListStatuses(
-    $filter: ModelStatusFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listStatuses(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        isClockedIn
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-    }
-  }
-`;
 export const getEntry = /* GraphQL */ `
   query GetEntry($id: ID!) {
     getEntry(id: $id) {
       id
       dateTime
+      status
       createdAt
       updatedAt
       owner
@@ -51,11 +23,56 @@ export const listEntries = /* GraphQL */ `
       items {
         id
         dateTime
+        status
         createdAt
         updatedAt
         owner
       }
       nextToken
+    }
+  }
+`;
+export const searchEntries = /* GraphQL */ `
+  query SearchEntries(
+    $filter: SearchableEntryFilterInput
+    $sort: [SearchableEntrySortInput]
+    $limit: Int
+    $nextToken: String
+    $from: Int
+    $aggregates: [SearchableEntryAggregationInput]
+  ) {
+    searchEntries(
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+      from: $from
+      aggregates: $aggregates
+    ) {
+      items {
+        id
+        dateTime
+        status
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      total
+      aggregateItems {
+        name
+        result {
+          ... on SearchableAggregateScalarResult {
+            value
+          }
+          ... on SearchableAggregateBucketResult {
+            buckets {
+              key
+              doc_count
+            }
+          }
+        }
+      }
     }
   }
 `;

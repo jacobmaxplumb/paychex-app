@@ -1,48 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateStatus = /* GraphQL */ `
-  subscription OnCreateStatus(
-    $filter: ModelSubscriptionStatusFilterInput
-    $owner: String
-  ) {
-    onCreateStatus(filter: $filter, owner: $owner) {
-      id
-      isClockedIn
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const onUpdateStatus = /* GraphQL */ `
-  subscription OnUpdateStatus(
-    $filter: ModelSubscriptionStatusFilterInput
-    $owner: String
-  ) {
-    onUpdateStatus(filter: $filter, owner: $owner) {
-      id
-      isClockedIn
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const onDeleteStatus = /* GraphQL */ `
-  subscription OnDeleteStatus(
-    $filter: ModelSubscriptionStatusFilterInput
-    $owner: String
-  ) {
-    onDeleteStatus(filter: $filter, owner: $owner) {
-      id
-      isClockedIn
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
 export const onCreateEntry = /* GraphQL */ `
   subscription OnCreateEntry(
     $filter: ModelSubscriptionEntryFilterInput
@@ -51,6 +9,7 @@ export const onCreateEntry = /* GraphQL */ `
     onCreateEntry(filter: $filter, owner: $owner) {
       id
       dateTime
+      status
       createdAt
       updatedAt
       owner
@@ -65,6 +24,7 @@ export const onUpdateEntry = /* GraphQL */ `
     onUpdateEntry(filter: $filter, owner: $owner) {
       id
       dateTime
+      status
       createdAt
       updatedAt
       owner
@@ -79,6 +39,7 @@ export const onDeleteEntry = /* GraphQL */ `
     onDeleteEntry(filter: $filter, owner: $owner) {
       id
       dateTime
+      status
       createdAt
       updatedAt
       owner
