@@ -1,6 +1,21 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const deleteEntry = /* GraphQL */ `
+  mutation DeleteEntry(
+    $input: DeleteEntryInput!
+    $condition: ModelEntryConditionInput
+  ) {
+    deleteEntry(input: $input, condition: $condition) {
+      id
+      clockInTime
+      clockOutTime
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
 export const createEntry = /* GraphQL */ `
   mutation CreateEntry(
     $input: CreateEntryInput!
@@ -8,8 +23,8 @@ export const createEntry = /* GraphQL */ `
   ) {
     createEntry(input: $input, condition: $condition) {
       id
-      dateTime
-      status
+      clockInTime
+      clockOutTime
       createdAt
       updatedAt
       owner
@@ -23,23 +38,8 @@ export const updateEntry = /* GraphQL */ `
   ) {
     updateEntry(input: $input, condition: $condition) {
       id
-      dateTime
-      status
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const deleteEntry = /* GraphQL */ `
-  mutation DeleteEntry(
-    $input: DeleteEntryInput!
-    $condition: ModelEntryConditionInput
-  ) {
-    deleteEntry(input: $input, condition: $condition) {
-      id
-      dateTime
-      status
+      clockInTime
+      clockOutTime
       createdAt
       updatedAt
       owner

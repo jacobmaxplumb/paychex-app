@@ -5,8 +5,8 @@ export const getEntry = /* GraphQL */ `
   query GetEntry($id: ID!) {
     getEntry(id: $id) {
       id
-      dateTime
-      status
+      clockInTime
+      clockOutTime
       createdAt
       updatedAt
       owner
@@ -22,8 +22,8 @@ export const listEntries = /* GraphQL */ `
     listEntries(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        dateTime
-        status
+        clockInTime
+        clockOutTime
         createdAt
         updatedAt
         owner
@@ -51,8 +51,8 @@ export const searchEntries = /* GraphQL */ `
     ) {
       items {
         id
-        dateTime
-        status
+        clockInTime
+        clockOutTime
         createdAt
         updatedAt
         owner

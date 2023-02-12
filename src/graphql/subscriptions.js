@@ -8,8 +8,8 @@ export const onCreateEntry = /* GraphQL */ `
   ) {
     onCreateEntry(filter: $filter, owner: $owner) {
       id
-      dateTime
-      status
+      clockInTime
+      clockOutTime
       createdAt
       updatedAt
       owner
@@ -23,8 +23,8 @@ export const onUpdateEntry = /* GraphQL */ `
   ) {
     onUpdateEntry(filter: $filter, owner: $owner) {
       id
-      dateTime
-      status
+      clockInTime
+      clockOutTime
       createdAt
       updatedAt
       owner
@@ -38,8 +38,8 @@ export const onDeleteEntry = /* GraphQL */ `
   ) {
     onDeleteEntry(filter: $filter, owner: $owner) {
       id
-      dateTime
-      status
+      clockInTime
+      clockOutTime
       createdAt
       updatedAt
       owner

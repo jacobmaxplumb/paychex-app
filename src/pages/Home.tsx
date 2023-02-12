@@ -1,42 +1,61 @@
-import { Button } from "@mui/material";
-import { API } from "aws-amplify"
+import { Flex } from "@aws-amplify/ui-react";
+import { Button, Card, CardActions, CardContent } from "@mui/material";
 import { useEffect, useState } from "react"
-import { addEntry } from "../actions/entries";
-import { searchEntries } from "../graphql/queries"
-import { STATUS } from "../models/entries.models";
+import { clockIn, clockOut, getMostRecentEntry } from "../actions/entries";
 
 export const Home = (props: any) => {
-    const [status, setStatus] = useState(STATUS.CLOCK_OUT);
+    const [entry, setEntry] = useState<any>(null);
 
-    const addNewEntry = async () => {
-        const onSuccess = (entry: any) => {
-            setStatus(entry.status);
-        }
-        addEntry(status === STATUS.CLOCK_OUT ? STATUS.CLOCK_IN : STATUS.CLOCK_OUT, onSuccess);
+    const getEntry = () => {
+        getMostRecentEntry().then(entry => {
+            setEntry(entry);
+        })
     }
 
-    const fetchEntries = async () => {
-        const result: any = await API.graphql({
-            query: searchEntries,
-            variables: {
-                sort: {
-                    field: 'dateTime',
-                    direction: 'desc'
-                }
-            },
-            authMode: 'AMAZON_COGNITO_USER_POOLS'
-        });
-        const entries = result.data.searchEntries.items;
-        setStatus(entries[0].status)
+    const clockUserIn = () => {
+        clockIn().then(entry => {
+            setEntry(entry);
+        })
+    }
+
+    const clockUserOut = () => {
+        clockOut(entry).then(entry => {
+            setEntry(entry);
+        })
+    }
+
+    const getDate = (isoDate: string) => {
+        const timeStamp = Date.parse(isoDate);
+        return new Date(timeStamp).toUTCString();
     }
 
     useEffect(() => {
-        fetchEntries();
+        getEntry();
     }, [])
     return (
-        <div>
-            {status === STATUS.CLOCK_IN  ? 'You are clocked in' : 'You are not clocked In'}
-            <Button variant="contained" onClick={addNewEntry}>Click</Button>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+            <Card>
+                <CardContent>
+                    {entry && entry.clockOutTime ? (
+                        <>{entry.owner} clocked out at: {getDate(entry.clockOutTime)}</>
+                    ) : (
+                        <>{entry && entry.clockInTime ? (
+                            <>{entry.owner} clocked in at: {getDate(entry.clockInTime)}</>
+                        ) : (
+                            <>User does not have any entries</>
+                        )}</>
+                    )}
+                </CardContent>
+                <CardActions style={{display: 'flex', justifyContent: 'center'}}>
+                    {!entry || entry.clockOutTime ? (
+                        <Button variant="contained" onClick={clockUserIn}>Clock In</Button>
+                    ) : (
+                        <Button color="error" variant="contained" onClick={clockUserOut}>Clock Out</Button>
+                    )}
+                </CardActions>
+
+            </Card>
+
         </div>
     )
 }

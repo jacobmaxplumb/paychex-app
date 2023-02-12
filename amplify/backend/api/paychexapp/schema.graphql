@@ -2,15 +2,10 @@
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-type Entry @model @auth(rules: [{ allow: owner }]) @searchable {
+type Entry @model @auth(rules: [{ allow: owner, operations: [create, read, update] }]) @searchable {
   id: ID!
-  dateTime: AWSDateTime!
-  status: Status
-}
-
-enum Status {
-  CLOCK_IN,
-  CLOCK_OUT
+  clockInTime: AWSDateTime!
+  clockOutTime: AWSDateTime
 }
 
 
