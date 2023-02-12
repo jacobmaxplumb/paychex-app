@@ -2,21 +2,21 @@ import logo from "./logo.svg";
 import "@aws-amplify/ui-react/styles.css";
 import {
   withAuthenticator,
-  Button,
-  Heading,
-  Image,
   View,
-  Card,
 } from "@aws-amplify/ui-react";
+import { TopBar } from "./components/TopBar";
+import { Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { TimeEntries } from "./pages/TimeEntries";
 
 function App({ signOut }: any) {
   return (
     <View className="App">
-      <Card>
-        <Image src={logo} className="App-logo" alt="logo" />
-        <Heading level={1}>We now have Auth!</Heading>
-      </Card>
-      <Button onClick={signOut}>Sign Out</Button>
+      <TopBar signOut={signOut} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/time-entries" element={<TimeEntries />} />
+      </Routes>
     </View>
   );
 }

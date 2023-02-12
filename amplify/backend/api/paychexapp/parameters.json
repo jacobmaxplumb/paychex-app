@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "paychexapp",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authpaychexapp96ed2f83",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
