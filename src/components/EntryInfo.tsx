@@ -3,7 +3,7 @@ import { getDate } from "../actions/helper"
 
 export const EntryInfo = ({ entry }: any) => {
     return (
-        <div style={{marginTop: '10px'}}>
+        <div style={{ marginTop: '10px' }}>
             <Card>
                 <CardContent>
                     <List>
@@ -25,6 +25,21 @@ export const EntryInfo = ({ entry }: any) => {
                     </List>
                 </CardContent>
             </Card>
+            {entry.breaks.length !== 0 && (
+                <Card>
+                    <CardContent>
+                        <List>
+                            {entry.breaks.map((breakItem: any, index: number) => (
+                                <ListItem disablePadding key={index}>
+                                <ListItemButton>
+                                    <ListItemText primary={`Break ${index + 1}`} secondary={!breakItem.endTime ? `${getDate(breakItem.startTime)}` : `${getDate(breakItem.startTime)} to ${getDate(breakItem.endTime)}`} />
+                                </ListItemButton>
+                            </ListItem>
+                            ))}
+                        </List>
+                    </CardContent>
+                </Card>
+            )}
         </div>
     )
 }

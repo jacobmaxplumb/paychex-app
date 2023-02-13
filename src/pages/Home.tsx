@@ -103,7 +103,7 @@ export const Home = (props: any) => {
                 </CardActions>
 
             </Card>
-            {(!entry.clockOutTime) && (
+            {(entry && !entry?.clockOutTime) && (
                 <EntryInfo entry={entry} />
             )}
             
