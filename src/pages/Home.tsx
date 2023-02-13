@@ -4,9 +4,8 @@ import { clockIn, clockOut, endBreak, endLunch, getMostRecentEntry, startBreak, 
 import { getDate } from "../actions/helper";
 import { EntryInfo } from "../components/EntryInfo";
 
-export const Home = (props: any) => {
+export const Home = () => {
     const [entry, setEntry] = useState<any>(null);
-    console.log(entry);
 
     const getEntry = () => {
         getMostRecentEntry().then(entry => {
