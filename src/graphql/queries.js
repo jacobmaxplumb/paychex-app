@@ -7,6 +7,14 @@ export const getEntry = /* GraphQL */ `
       id
       clockInTime
       clockOutTime
+      breaks {
+        startTime
+        endTime
+      }
+      lunch {
+        startTime
+        endTime
+      }
       createdAt
       updatedAt
       owner
@@ -24,6 +32,14 @@ export const listEntries = /* GraphQL */ `
         id
         clockInTime
         clockOutTime
+        breaks {
+          startTime
+          endTime
+        }
+        lunch {
+          startTime
+          endTime
+        }
         createdAt
         updatedAt
         owner
@@ -53,6 +69,14 @@ export const searchEntries = /* GraphQL */ `
         id
         clockInTime
         clockOutTime
+        breaks {
+          startTime
+          endTime
+        }
+        lunch {
+          startTime
+          endTime
+        }
         createdAt
         updatedAt
         owner

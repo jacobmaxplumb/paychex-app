@@ -10,6 +10,14 @@ export const onCreateEntry = /* GraphQL */ `
       id
       clockInTime
       clockOutTime
+      breaks {
+        startTime
+        endTime
+      }
+      lunch {
+        startTime
+        endTime
+      }
       createdAt
       updatedAt
       owner
@@ -25,6 +33,14 @@ export const onUpdateEntry = /* GraphQL */ `
       id
       clockInTime
       clockOutTime
+      breaks {
+        startTime
+        endTime
+      }
+      lunch {
+        startTime
+        endTime
+      }
       createdAt
       updatedAt
       owner
@@ -40,6 +56,14 @@ export const onDeleteEntry = /* GraphQL */ `
       id
       clockInTime
       clockOutTime
+      breaks {
+        startTime
+        endTime
+      }
+      lunch {
+        startTime
+        endTime
+      }
       createdAt
       updatedAt
       owner
