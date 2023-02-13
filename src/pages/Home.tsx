@@ -1,4 +1,3 @@
-import { Flex } from "@aws-amplify/ui-react";
 import { Button, Card, CardActions, CardContent } from "@mui/material";
 import { useEffect, useState } from "react"
 import { clockIn, clockOut, getMostRecentEntry } from "../actions/entries";

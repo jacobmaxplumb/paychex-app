@@ -34,7 +34,7 @@ export const clockIn = async () => {
 		});
 		return result.data.createEntry;
 	} catch (e: any) {
-		console.log(e);
+		console.error(e);
 	}
 };
 
@@ -55,7 +55,7 @@ export const addEntry = async (
 		});
 		onSuccess(result.data.createEntry);
 	} catch (e: any) {
-		console.log(e);
+		console.error(e);
 	}
 };
 
@@ -74,7 +74,7 @@ export const getMostRecentEntry = async () => {
 		const entries = result.data.searchEntries.items;
 		return entries[0];
 	} catch (e: any) {
-		console.log(e);
+		console.error(e);
 	}
 };
 
